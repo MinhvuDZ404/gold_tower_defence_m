@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c1118" />
+  <meta name="description" content="Gold Tower Defence M — a premium fantasy tower defense RPG." />
+  <title>Gold Tower Defence M</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-action="go-lobby" aria-label="Back to lobby">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span><b>GOLD</b><strong>TOWER DEFENCE <em>M</em></strong></span>
+      </button>
+      <div class="topbar-center">
+        <span class="season-dot"></span>
+        <span id="season-label">SEASON 07 · THE VERDANT RIFT</span>
+      </div>
+      <div class="resource-bar" aria-label="Resources">
+        <div class="resource-chip gold"><span class="resource-icon">◈</span><b id="gold-value">0</b><small>GOLD</small></div>
+        <div class="resource-chip diamond"><span class="resource-icon">◆</span><b id="diamond-value">0</b><small>DIAMOND</small></div>
+        <div class="resource-chip ruby"><span class="resource-icon">✦</span><b id="ruby-value">0</b><small>RUBY</small></div>
+        <button class="profile-button" data-action="profile" aria-label="Profile"><span>AV</span><i>3</i></button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="lobby-view" class="view active" data-view="lobby">
+        <div class="lobby-grid">
+          <div class="hero-column">
+            <div class="welcome-line"><span class="eyebrow">THE LAST CITADEL</span><span class="live-pill"><i></i> LIVE EVENT</span></div>
+            <h1>Guard the <span>Golden</span><br />frontier.</h1>
+            <p class="hero-copy">The Verdant Rift is blooming with corrupted life. Rally your champions, shape the battlefield, and hold the line before the ancient gate falls.</p>
+            <div class="hero-actions">
+              <button class="button primary large" data-action="play-next"><span class="button-glyph">▶</span> CONTINUE CAMPAIGN <small id="next-stage-label">STAGE 01</small></button>
+              <button class="button ghost large" data-action="open-campaign"><span class="button-glyph">▦</span> STAGE MAP</button>
+            </div>
+            <div class="hero-meta">
+              <div><b id="campaign-progress">0%</b><span>CAMPAIGN<br />CONQUEST</span></div>
+              <div><b id="player-level">LV. 06</b><span>WARDEN<br />RANK</span></div>
+              <div><b id="boss-count">00</b><span>BOSSES<br />DEFEATED</span></div>
+            </div>
+          </div>
+          <div class="citadel-scene">
+            <div class="scene-noise"></div>
+            <div class="moon"></div><div class="moon-glow"></div>
+            <div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div>
+            <div class="scene-vines v1"></div><div class="scene-vines v2"></div>
+            <div class="citadel-tower"><div class="tower-light"></div><div class="tower-window w1"></div><div class="tower-window w2"></div><div class="tower-flag">◆</div></div>
+            <div class="scene-foreground"></div>
+            <div class="scene-caption"><span>ACTIVE THREAT</span><b>THE VERDANT RIFT</b><small>Next invasion in <strong id="event-countdown">04:28:16</strong></small></div>
+          </div>
+        </div>
+
+        <div class="dashboard-row">
+          <article class="panel daily-panel">
+            <div class="panel-heading"><div><span class="eyebrow">DAILY OPERATIONS</span><h2>Commander's log</h2></div><button class="icon-button" data-action="open-challenges">↗</button></div>
+            <div class="mission-list" id="mission-list"></div>
+            <div class="streak-row"><span class="streak-fire">✦</span><div><b><span id="streak-days">3</span> day streak</b><small>Next reward: 40 Diamonds</small></div><div class="streak-dots"><i class="done"></i><i class="done"></i><i class="done"></i><i class="today"></i><i></i><i></i><i></i></div></div>
+          </article>
+          <article class="panel featured-panel">
+            <div class="panel-heading"><div><span class="eyebrow">FEATURED DEPLOYMENT</span><h2>Warden's Oath</h2></div><span class="rarity-tag mythic">MYTHIC</span></div>
+            <div class="featured-body"><div class="featured-orb"><div>✧</div></div><div><h3>Seraphine, Dawnkeeper</h3><p>Restore the light to allies below 50% health. Her sunlance pierces through armor.</p><button class="text-button" data-action="open-collection">VIEW CODEX <span>→</span></button></div></div>
+            <div class="featured-footer"><span><i class="status-dot"></i> 6d 14h remaining</span><button class="button small gold-outline" data-action="open-collection">VIEW HERO</button></div>
+          </article>
+          <article class="panel quick-panel">
+            <div class="panel-heading"><div><span class="eyebrow">QUICK ACCESS</span><h2>Armory</h2></div><span class="armory-count">12 / 48</span></div>
+            <div class="quick-icons"><button data-action="open-collection"><span class="quick-icon hero">✦</span><b>HEROES</b><small>18 owned</small></button><button data-action="open-collection"><span class="quick-icon tower">⌁</span><b>TOWERS</b><small>12 owned</small></button><button data-action="open-gacha"><span class="quick-icon summon">◇</span><b>SUMMON</b><small>Free pull</small></button></div>
+            <div class="mail-row"><span class="mail-icon">✉</span><div><b>New message from the Guild</b><small>Rewards are waiting in your mailbox.</small></div><i class="unread-dot"></i></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="campaign-view" class="view" data-view="campaign">
+        <div class="page-heading"><div><span class="eyebrow">THE CHRONICLE</span><h1>Campaign map</h1><p>Every region hides a different answer to the rift.</p></div><div class="map-stats"><span><b id="map-cleared">0</b> / 200</span><small>STAGES CLEARED</small></div></div>
+        <div class="region-tabs" id="region-tabs"></div>
+        <div class="stage-map-wrap"><div class="map-sky"><div class="map-stars"></div><div class="map-rift"></div><div class="map-grid-lines"></div><div id="stage-path" class="stage-path"></div></div><div id="stage-list" class="stage-list"></div></div>
+      </section>
+
+      <section id="collection-view" class="view" data-view="collection">
+        <div class="page-heading"><div><span class="eyebrow">THE CODEX</span><h1>Collection</h1><p>Build a squad that turns the enemy's strength against them.</p></div><button class="button primary" data-action="open-gacha">✦ SUMMON NEW</button></div>
+        <div class="collection-tabs"><button class="active" data-collection-tab="heroes">HEROES <span>18</span></button><button data-collection-tab="towers">TOWERS <span>12</span></button><button data-collection-tab="relics">RELICS <span>04</span></button></div>
+        <div id="collection-grid" class="collection-grid"></div>
+      </section>
+
+      <section id="challenges-view" class="view" data-view="challenges">
+        <div class="page-heading"><div><span class="eyebrow">PROVING GROUNDS</span><h1>Challenges</h1><p>Mastery comes from fighting with constraints.</p></div><div class="challenge-reset"><small>RESET IN</small><b>11:42:08</b></div></div>
+        <div class="challenge-grid">
+          <article class="challenge-feature panel"><span class="challenge-symbol">∞</span><span class="eyebrow">TOWER OF PROOF · FLOOR 07</span><h2>Only the patient<br /><em>survive.</em></h2><p>Enemies regenerate after every 5 hits. Build a chain of precision, not a wall of force.</p><div class="challenge-reward"><span>REWARD</span><b>✦ 120 Magic Stone</b></div><button class="button primary" data-action="start-proof">ENTER TRIAL <span>→</span></button></article>
+          <article class="challenge-card panel"><div class="challenge-icon daily">◷</div><span class="eyebrow">DAILY CHALLENGE</span><h2>Glass Citadel</h2><p>Win with 1 life. No tower may be upgraded past tier 2.</p><div class="challenge-progress"><span>0 / 1</span><i><b style="width:0%"></b></i></div><button class="button ghost">VIEW RULES</button></article>
+          <article class="challenge-card panel"><div class="challenge-icon endless">↗</div><span class="eyebrow">ENDLESS FRONTIER</span><h2>How far can you go?</h2><p>Infinite waves. Leaderboard resets every week.</p><div class="leader-line"><span>#184</span><b>1,240</b><small>BEST WAVE</small></div><button class="button ghost" data-action="start-endless">DEPLOY</button></article>
+        </div>
+        <div class="achievements panel"><div class="panel-heading"><div><span class="eyebrow">LONG-TERM MASTERY</span><h2>Achievements</h2></div><button class="text-button">VIEW ALL →</button></div><div class="achievement-list"><div class="achievement"><span>♜</span><div><b>First Light</b><small>Clear the first region.</small></div><i class="complete">✓</i></div><div class="achievement"><span>♢</span><div><b>Elemental Tactician</b><small>Exploit 50 attribute weaknesses.</small></div><i>12 / 50</i></div><div class="achievement"><span>♟</span><div><b>Untouchable</b><small>Clear a stage without losing lives.</small></div><i>0 / 1</i></div><div class="achievement"><span>✧</span><div><b>Riftbreaker</b><small>Defeat an elite boss.</small></div><i>0 / 1</i></div></div></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation"><button class="active" data-nav="lobby"><span>⌂</span><b>LOBBY</b></button><button data-nav="campaign"><span>◈</span><b>CAMPAIGN</b><i class="nav-badge">!</i></button><button data-nav="collection"><span>♜</span><b>CODEX</b></button><button data-nav="challenges"><span>✦</span><b>CHALLENGES</b></button></nav>
+
+    <div id="battle-screen" class="battle-screen" aria-hidden="true">
+      <div class="battle-topbar"><button class="battle-back" data-action="leave-battle">← <span>ABANDON</span></button><div class="battle-title"><span class="eyebrow" id="battle-region">REGION 01 · THE VERDANT RIFT</span><h2 id="battle-stage-title">The Mossbound Gate</h2></div><div class="battle-resources"><div><span>◈</span><b id="battle-gold">240</b></div><div><span>✧</span><b id="battle-mana">100</b></div><div class="lives"><span>♥</span><b id="battle-lives">20</b></div></div></div>
+      <div class="battle-main"><div class="canvas-frame"><canvas id="battle-canvas"></canvas><div class="canvas-vignette"></div><div class="wave-banner" id="wave-banner"><span class="eyebrow">INCOMING WAVE</span><b id="wave-banner-title">WAVE 01</b></div><div class="battle-toast" id="battle-toast"></div></div><aside id="battle-side" class="battle-side"><div class="side-section wave-status"><div class="side-label"><span>WAVE PROGRESS</span><b id="wave-count">1 / 8</b></div><div class="progress-line"><i id="wave-progress"></i></div><div class="side-small"><span id="enemies-left">Ready when you are.</span><span id="wave-type">SCOUTING PARTY</span></div></div><div class="side-section selected-panel" id="selected-panel"><div class="empty-selection"><span>⌖</span><b>SELECT A TOWER</b><small>Build a defense or tap a tower to inspect it.</small></div></div><div class="side-section field-log"><div class="side-label"><span>FIELD INTEL</span><button class="text-button" data-action="clear-log">CLEAR</button></div><div id="battle-log"></div></div></aside></div>
+      <div class="battle-footer"><div class="tower-tray"><div class="tray-label"><span class="eyebrow">BUILD DEFENCES</span><small>Click a pad to deploy</small></div><div id="tower-tray-cards"></div></div><div class="battle-controls"><button class="ability-button meteor" data-ability="meteor"><span>✦</span><b>METEOR</b><small>60 mana</small><i></i></button><button class="ability-button frost" data-ability="frost"><span>❄</span><b>FROSTBIND</b><small>40 mana</small><i></i></button><button class="ability-button rally" data-ability="rally"><span>♜</span><b>RALLY</b><small>30 mana</small><i></i></button><button class="wave-button" id="wave-button" data-action="start-wave"><span>▶</span><b>START WAVE</b><small>prepare your line</small></button></div></div>
+      <div id="tower-tooltip" class="tower-tooltip" hidden></div>
+    </div>
+
+    <div id="result-modal" class="modal-backdrop" hidden><div class="result-modal"><div class="result-rays"></div><span class="eyebrow" id="result-kicker">VICTORY · THE CITADEL HOLDS</span><div class="result-emblem" id="result-emblem">✦</div><h2 id="result-title">RIFT SEALED</h2><p id="result-copy">Your strategy held against the verdant tide.</p><div class="star-row" id="result-stars"><span>★</span><span>★</span><span>★</span></div><div class="reward-row"><div><span>REWARD</span><b>◈ <strong id="result-gold">+120</strong> GOLD</b></div><div><span>EXPERIENCE</span><b>✦ <strong id="result-xp">+80</strong> XP</b></div><div><span>LOOT</span><b id="result-loot">✧ Magic Stone</b></div></div><div class="result-actions"><button class="button ghost" data-action="result-map">STAGE MAP</button><button class="button primary" data-action="result-next">NEXT STAGE <span>→</span></button></div></div></div>
+
+    <div id="gacha-modal" class="modal-backdrop" hidden><div class="gacha-modal"><button class="modal-close" data-action="close-gacha">×</button><span class="eyebrow">ASTRAL SUMMON</span><h2>Call a <span>new legend.</span></h2><p>The stars favor the brave. Your first summon of the day is free.</p><div class="summon-orb"><div class="orb-ring r1"></div><div class="orb-ring r2"></div><div class="orb-core">✧</div><span>FREE</span></div><div class="summon-pity"><span>GUARANTEED EPIC</span><b>07 / 10 summons</b><i><em></em></i></div><button class="button primary large" id="summon-button" data-action="summon"><span>✦</span> SUMMON ONCE <small>FREE</small></button><button class="text-button" data-action="close-gacha">Maybe later</button></div></div>
+
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
